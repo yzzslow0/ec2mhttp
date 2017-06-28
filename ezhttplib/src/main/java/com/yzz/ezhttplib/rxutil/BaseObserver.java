@@ -19,7 +19,7 @@ public abstract class BaseObserver<T extends HttpResult> implements Observer<T> 
 
     public abstract void onFailed(String message);
 
-    protected abstract void onSuccess(String response);
+    protected abstract void onSuccess(T response);
 
 //        @Override
 //    public void onStart() {
@@ -49,7 +49,7 @@ public abstract class BaseObserver<T extends HttpResult> implements Observer<T> 
     public void onNext(T response) {
         if (response.getState() == 0) {
             L.i("BaseObserver", "onNext");
-            onSuccess(response + "");
+            onSuccess(response );
         } else {
             onFailed(response.getMsg());
         }

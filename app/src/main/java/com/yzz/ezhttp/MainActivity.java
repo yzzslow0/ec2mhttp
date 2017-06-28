@@ -38,9 +38,11 @@ public class MainActivity extends Activity {
                     }
 
                     @Override
-                    protected void onSuccess(String response) {
-                        L.v(response);
+                    protected void onSuccess(HttpResult response) {
+                        L.i(response.getData()+"");
                     }
+
+
                 });
 
 
