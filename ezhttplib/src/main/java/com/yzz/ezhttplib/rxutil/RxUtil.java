@@ -15,11 +15,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxUtil {
 
-    public static <T> ObservableTransformer<Class<T>, Class<T>> defaultSchedulers() {
-        return new ObservableTransformer<Class<T>, Class<T>>() {
+    public static <T> ObservableTransformer<T, T> defaultSchedulers() {
+        return new ObservableTransformer<T, T>() {
 
             @Override
-            public ObservableSource<Class<T>> apply(Observable<Class<T>> upstream) {
+            public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread());
             }
         };

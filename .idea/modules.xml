@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EzHttp.iml" filepath="$PROJECT_DIR$/EzHttp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ec2mhttp.iml" filepath="$PROJECT_DIR$/ec2mhttp.iml" />
       <module fileurl="file://$PROJECT_DIR$/ezhttplib/ezhttplib.iml" filepath="$PROJECT_DIR$/ezhttplib/ezhttplib.iml" />
     </modules>
   </component>
