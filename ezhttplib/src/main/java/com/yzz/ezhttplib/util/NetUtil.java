@@ -15,8 +15,13 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
 public class NetUtil {
@@ -229,5 +234,36 @@ public class NetUtil {
             return false;
         }
     }
+
+
+
+    public static MultipartBody filesToMultipartBody(List<File> files) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+
+        for (File file : files) {
+            // TODO: 16-4-2  这里为了简单起见，没有判断file的类型
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpg"), file);
+            builder.addFormDataPart("file", file.getName(), requestBody);
+        }
+
+        builder.setType(MultipartBody.FORM);
+        MultipartBody multipartBody = builder.build();
+        return multipartBody;
+    }
+
+
+    public static List<MultipartBody.Part> filesToMultipartBodyParts(List<File> files) {
+        List<MultipartBody.Part> parts = new ArrayList<>(files.size());
+        for (File file : files) {
+            // TODO: 16-4-2  这里为了简单起见，没有判断file的类型
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpg"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData(file.getName(), file.getName(), requestBody);
+            parts.add(part);
+        }
+        return parts;
+    }
+
+
+
 
 }

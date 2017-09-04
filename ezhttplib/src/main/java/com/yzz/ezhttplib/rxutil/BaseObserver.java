@@ -14,46 +14,26 @@ import io.reactivex.disposables.Disposable;
  * Created by yzz on 2017/6/28.
  */
 
-public abstract class BaseObserver<T extends HttpResult> implements Observer<T> {
+ public abstract class BaseObserver<T> implements Observer<T> {
 
 
-    public abstract void onFailed(String message);
+
+    protected abstract void onFailed(String message);
 
     protected abstract void onSuccess(T response);
 
-//        @Override
-//    public void onStart() {
-//        super.onStart();
-//
-//        L.v("Http is Start");
-//        if (!NetUtil.isNetworkAvailable()) {
-//            L.v("BaseSubscriber","无网络");
-//            onCompleted();
-//            return;
-//        }
-//
-//    }
+
 
     @Override
     public void onSubscribe(Disposable d) {
-        Log.v("onSubscribe", "????");
         Log.v("Http is Start","");
         if (!NetUtil.isNetworkAvailable()) {
             Log.v("BaseSubscriber","无网络");
             onComplete();
-            return;
         }
     }
 
-    @Override
-    public void onNext(T response) {
-        if (response.getState() == 0) {
-            L.i("BaseObserver", "onNext");
-            onSuccess(response );
-        } else {
-            onFailed(response.getMsg());
-        }
-    }
+
 
     @Override
     public void onError(Throwable e) {
@@ -63,7 +43,7 @@ public abstract class BaseObserver<T extends HttpResult> implements Observer<T> 
         onFinish();
     }
 
-    public void onFinish() {
+    private void onFinish() {
         L.v("BaseObserver", "请求完成");
     }
 

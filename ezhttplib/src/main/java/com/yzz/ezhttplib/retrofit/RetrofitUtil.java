@@ -75,7 +75,7 @@ public class RetrofitUtil {
 
     }
 
-    public static <T> T create(Class<T> ServiceClass) {
+    public  <T> T create(Class<T> ServiceClass) {
         return mRetrofit.create(ServiceClass);
     }
 

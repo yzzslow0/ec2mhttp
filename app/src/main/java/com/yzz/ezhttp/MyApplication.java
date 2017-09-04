@@ -12,6 +12,7 @@ public class MyApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        RetrofitUtil.IP = "http://172.16.0.167:8080";
+//        RetrofitUtil.IP = "http://172.16.0.165:8080";
+        RetrofitUtil.IP = "https://api.lookdoor.cn";
     }
 }
